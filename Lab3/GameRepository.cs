@@ -24,19 +24,8 @@ public class GameRepository : IGameRepository
         return context.Games.Find(x => x.GameId == gameId);
     }
 
-    public void GetStats()
+    public List<BaseGame> GetStats()
     {
-        Console.WriteLine("\nСтатистика iгор:");
-        Console.WriteLine("-------------------------------------------------");
-        Console.WriteLine("| Противник     | Результат  | Рейтинг | Game ID      |");
-        Console.WriteLine("-------------------------------------------------");
-
-        foreach (var game in context.Games)
-        {
-            string result = game.IsWin ? "Win" : "Lose";
-            Console.WriteLine($"| {game.OpponentName,-12} | {result,-7} | {game.CalculateRating(),-6} | {game.GameId} |");
-        }
-
-        Console.WriteLine("-------------------------------------------------");
+        return context.Games;
     }
 }
